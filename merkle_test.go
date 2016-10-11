@@ -1,10 +1,12 @@
-package merkle
+package merkle_test
 
 import (
 	"crypto/sha1"
 	"fmt"
 	"io"
 	"testing"
+
+	"github.com/RichardKnop/merkle"
 )
 
 func TestMerkleTree(t *testing.T) {
@@ -16,25 +18,25 @@ func TestMerkleTree(t *testing.T) {
 	)
 
 	// Create leaf nodes
-	leafNode1, err := NewLeafNode([]byte(dataBlock1))
+	leafNode1, err := merkle.NewLeafNode([]byte(dataBlock1))
 	if err != nil {
 		t.Error(err)
 	}
-	leafNode2, err := NewLeafNode([]byte(dataBlock2))
+	leafNode2, err := merkle.NewLeafNode([]byte(dataBlock2))
 	if err != nil {
 		t.Error(err)
 	}
-	leafNode3, err := NewLeafNode([]byte(dataBlock3))
+	leafNode3, err := merkle.NewLeafNode([]byte(dataBlock3))
 	if err != nil {
 		t.Error(err)
 	}
-	leafNode4, err := NewLeafNode([]byte(dataBlock4))
+	leafNode4, err := merkle.NewLeafNode([]byte(dataBlock4))
 	if err != nil {
 		t.Error(err)
 	}
 
 	// Build the merkle tree
-	rootNode := BuildTree(leafNode1, leafNode2, leafNode3, leafNode4)
+	rootNode := merkle.BuildTree(leafNode1, leafNode2, leafNode3, leafNode4)
 
 	// Assert parent checksums
 	c1, err := leafNode1.Parent.Checksum()
