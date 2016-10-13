@@ -2,7 +2,7 @@
 
 # merkle
 
-A Golang implementation of a [https://en.wikipedia.org/wiki/Merkle_tree](merkle tree).
+A Golang implementation of a [Merkle tree](https://en.wikipedia.org/wiki/Merkle_tree).
 
 Run tests:
 
